@@ -289,3 +289,14 @@ class Unit(models.Model):
     class Meta:
         managed = True
         db_table = 'unit'
+
+
+class Version(models.Model):
+    value = models.IntegerField()
+    
+    def __unicode__(self):
+        return str(self.value)
+    
+    def incVal(self):
+        self.value += 1
+        
