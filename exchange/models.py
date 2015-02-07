@@ -99,12 +99,14 @@ class Building(models.Model):
     aliases = models.TextField(blank=True)  # This field type is a guess.
     imageresource = models.TextField(db_column='imageResource', blank=True)  # Field name made lowercase. This field type is a guess.
     markerimageresource = models.TextField(db_column='markerImageResource', blank=True)  # Field name made lowercase. This field type is a guess.
+    imageofbuilding = models.TextField(blank=True)
+    descriptionofbuilding = models.TextField(blank=True)
 
     def __unicode__(self):
         return self.name
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'building'
 
 
@@ -119,7 +121,7 @@ class Buildingentry(models.Model):
         return "Wejscie numer " + str(self.id) + " do budynku numer " + str(self.building_id)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'buildingEntry'
 
 
@@ -202,7 +204,7 @@ class Floor(models.Model):
         return self.name
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'floor'
 
 
@@ -216,7 +218,7 @@ class Navigationconnection(models.Model):
         return "Polaczenie miedzy " + str(self.navigationpointfirst_id) + " a " + str(self.navigationpointlast_id)
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'navigationConnection'
 
 
@@ -231,7 +233,7 @@ class Navigationpoint(models.Model):
         return "Punkt nawigacyjny numer " + str(self.id) + " na pietrze numer " + str(self.floor_id)
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'navigationPoint'
 
 
@@ -254,7 +256,7 @@ class Room(models.Model):
         return self.name + " w budynku numer " + str(self.building_id)
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'room'
 
 
@@ -267,7 +269,7 @@ class Specialconnection(models.Model):
         return "Polaczenie specjalne miedzy " + str(self.specialpointlower_id) + " a " + str(self.specialpointupper_id)
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'specialConnection'
 
 
@@ -285,5 +287,5 @@ class Unit(models.Model):
         return self.name
     
     class Meta:
-        managed = False
+        managed = True
         db_table = 'unit'
